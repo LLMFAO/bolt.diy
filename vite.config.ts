@@ -146,6 +146,28 @@ export default defineConfig((config) => {
         },
       },
     },
+     server: {
+      // Listen on all network interfaces within the container/environment
+      host: '0.0.0.0',
+      // Use the PORT environment variable provided by Railway, defaulting to 3000 locally
+      port: parseInt(process.env.PORT || '3000'),
+      // Explicitly allowlist the hosts that can connect to the Vite server
+      allowedHosts: [
+        // Recommended: Use the Railway public domain environment variable
+        process.env.RAILWAY_PUBLIC_DOMAIN,
+        // You can also add the specific domain from the error message as a fallback
+        // or if the environment variable isn't available for some reason
+        // Keep these for local development
+        'localhost',
+        '127.0.0.1',
+      ].filter(Boolean), // This filters out any null/undefined values if env vars aren't set
+
+      // If you run the DEV server (`vite`) on Railway and need HMR:
+      // hmr: {
+      //   clientPort: 443, // Standard HTTPS port used by Railway proxy
+      //   protocol: 'wss', // Use secure WebSockets
+      // },
+    },
   };
 });
 
