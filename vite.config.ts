@@ -100,7 +100,7 @@ server: {
     'localhost',
     'bolt.latentspaceai.com'
   ]
-}
+},
     plugins: [
       nodePolyfills({
         include: ['buffer', 'process', 'util', 'stream'],
