@@ -98,7 +98,8 @@ server: {
   host: true,
   allowedHosts: [
     'localhost',
-    'bolt.latentspaceai.com'
+    'bolt.latentspaceai.com',
+    'boltn.latentspaceai.com'
   ]
 },
     plugins: [
